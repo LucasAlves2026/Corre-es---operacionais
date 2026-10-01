@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle de Correções Operacionais — PROSECURITY</title>
+  <link rel="icon" href="assets/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- ================= LOGIN ================= -->
+  <div id="login-tela" class="login-tela" hidden>
+    <form id="login-form" class="login-card" autocomplete="off" novalidate>
+      <img src="assets/logo.jpg" alt="Logo Pro Security" width="64" height="64">
+      <h1>Controle de Correções Operacionais</h1>
+      <p class="login-sub">PROSECURITY · Acesso restrito</p>
+      <div id="lg-erro" class="lg-msg" role="alert" hidden></div>
+      <label class="lbl" for="lg-login">Login</label>
+      <input id="lg-login" type="text" autocomplete="username" autocapitalize="characters" spellcheck="false" maxlength="30">
+      <label class="lbl" for="lg-senha">Senha</label>
+      <input id="lg-senha" type="password" autocomplete="current-password" maxlength="100">
+      <label class="lg-ver"><input type="checkbox" id="lg-ver"> Mostrar senha</label>
+      <button type="submit" class="btn btn-primary" id="lg-ok">Entrar</button>
+      <p class="login-nota">O login identifica o <strong>nível de acesso</strong>. Em cada solicitação e tratativa será pedido o <strong>nome da pessoa</strong> responsável.</p>
+    </form>
+  </div>
+
+  <div class="app" hidden>
+    <!-- ================= MENU LATERAL ================= -->
+    <aside class="sidebar" id="sidebar" aria-label="Menu lateral">
+      <div class="brand">
+        <img src="assets/logo.jpg" alt="Logo Pro Security" width="44" height="44">
+        <div class="brand-txt">
+          <strong>CORREÇÕES</strong>
+          <span>OPERACIONAIS</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Menu principal">
+        <a href="#/dashboard"    data-view="dashboard"><span class="ico" data-ico="dashboard"></span>DASHBOARD</a>
+        <a href="#/nova"         data-view="nova"><span class="ico" data-ico="plus"></span>NOVA CORREÇÃO</a>
+        <a href="#/correcoes"    data-view="correcoes"><span class="ico" data-ico="list"></span>CORREÇÕES<span class="badge" data-badge="TOTAL"></span></a>
+        <div class="nav-sep" role="presentation"></div>
+        <a href="#/pendentes"    data-view="pendentes"><span class="ico" data-ico="relogio"></span>PENDENTES<span class="badge badge-alerta" data-badge="PENDENTE"></span></a>
+        <a href="#/tratativa"    data-view="tratativa"><span class="ico" data-ico="tratativa"></span>EM TRATATIVA<span class="badge" data-badge="EM TRATATIVA"></span></a>
+        <a href="#/aguardando"   data-view="aguardando"><span class="ico" data-ico="interrogacao"></span>AGUARDANDO INFORMAÇÃO<span class="badge" data-badge="AGUARDANDO INFORMAÇÃO"></span></a>
+        <a href="#/corrigidos"   data-view="corrigidos"><span class="ico" data-ico="check"></span>CORRIGIDOS<span class="badge" data-badge="CORRIGIDO"></span></a>
+        <div class="nav-sep" role="presentation"></div>
+        <a href="#/indicadores"  data-view="indicadores"><span class="ico" data-ico="grafico"></span>INDICADORES</a>
+        <a href="#/historico"    data-view="historico"><span class="ico" data-ico="historico"></span>HISTÓRICO</a>
+        <a href="#/usuarios"     data-view="usuarios"><span class="ico" data-ico="usuarios"></span>USUÁRIOS E ACESSOS</a>
+      </nav>
+
+      <div class="side-foot">
+        <button type="button" class="btn-side" id="btn-backup"><span class="ico" data-ico="download"></span>Backup dos dados</button>
+        <p><span id="rodape-modo">Armazenamento local (localStorage)</span><br>Versão <span id="versao"></span></p>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <div class="main-col">
+      <!-- ================= CABEÇALHO ================= -->
+      <header class="topbar">
+        <button type="button" class="btn-ico menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-controls="sidebar" aria-expanded="false"><span class="ico" data-ico="menu"></span></button>
+        <div class="topbar-title">
+          <span class="t1">CONTROLE DE CORREÇÕES OPERACIONAIS</span>
+          <span class="t2">PROSECURITY · Backoffice Operacional</span>
+        </div>
+        <div class="topbar-right">
+          <span class="sync" id="sync-estado" hidden></span>
+          <span class="chip-user" id="chip-conta"><span class="ico" data-ico="usuario"></span><span id="usuario-nome"></span><span class="chip-perfil" id="chip-perfil"></span></span>
+          <button type="button" class="btn btn-sm btn-sair" id="btn-sair" title="Sair do sistema"><span class="ico" data-ico="sair"></span>Sair</button>
+        </div>
+      </header>
+
+      <div id="avisos" aria-live="polite"></div>
+      <main id="conteudo" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
